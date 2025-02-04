@@ -37,7 +37,7 @@ public class Gambler {
 
       // Game logic
       while (pot > 0 && pot < goal) {
-        // TO DO - Implement game logic
+        // I have added the game logic
         if(simulateThrow() < 6)
         {
           pot++;
