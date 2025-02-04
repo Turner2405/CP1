@@ -38,6 +38,7 @@ public class Gambler {
       // Game logic
       while (pot > 0 && pot < goal) {
         // TO DO - Implement game logic
+        System.out.print("you lose");
 
       }
       if (pot == goal) {
