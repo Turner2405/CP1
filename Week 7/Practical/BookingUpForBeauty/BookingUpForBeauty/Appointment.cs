@@ -15,8 +15,10 @@
  * 
 */
 
+using System.ComponentModel.Design;
 using System.Globalization;
 using System.Text;
+using System.Text.Json.Serialization;
 
 namespace BookingUpForBeauty
 {
@@ -35,8 +37,10 @@ namespace BookingUpForBeauty
         /// <exception cref="NotImplementedException"></exception>
         public static DateTime Schedule(string appointmentDateDescription)
         {
-            //TODO: Implement the method as described in the document comments. 
-            throw new NotImplementedException("Please implement the (static) Appointment.Schedule() method");
+            //TODO: Implement the method as described in the document comments.
+            DateTime appointmentDate = DateTime.Parse(appointmentDateDescription);
+            return appointmentDate;
+            //throw new NotImplementedException("Please implement the (static) Appointment.Schedule() method");
         }
 
         /// <summary>
@@ -52,8 +56,13 @@ namespace BookingUpForBeauty
         /// <exception cref="NotImplementedException"></exception>
         public static bool HasPassed(DateTime appointmentDate)
         {
-            //TODO: Implement the method as described in the document comments. 
-            throw new NotImplementedException("Please implement the (static) Appointment.HasPassed() method");
+            DateTime CurrentDate = DateTime.Now;
+            if (appointmentDate > CurrentDate)
+            {
+                return true;
+            }
+            else { return false; }
+
         }
 
         /// <summary>
@@ -69,23 +78,30 @@ namespace BookingUpForBeauty
         /// <exception cref="NotImplementedException"></exception>
         public static bool IsAfternoonAppointment(DateTime appointmentDate)
         {
-            //TODO: Implement the method as described in the document comments. 
-            throw new NotImplementedException("Please implement the (static) Appointment.IsAfternoonAppointment() method");
-        }
+            //TODO: Implement the method as described in the document comments.
+            int timeofAppointment = appointmentDate.Hour;
 
-        /// <summary>
-        /// The <c>Description</c> method takes an appointment date and returns a description of 
-        /// that date and time:
-        /// Input: new DateTime(2019, 03, 29, 15, 0, 0)
-        /// Output: "You have an appointment on 29/3/2019 3:00:00 PM."
-        /// </summary>
-        /// <param name="appointmentDate"> a valid instance of <c>DateTime</c></param> 
-        /// <returns><c>string</c> describing the date and time of the appointment.</returns> 
-        /// <exception cref="NotImplementedException"></exception>
+            if (timeofAppointment >= 12 && timeofAppointment < 18)
+            {
+                return true;
+            }
+            else { return false; }
+
+            /// <summary>
+            /// The <c>Description</c> method takes an appointment date and returns a description of 
+            /// that date and time:
+            /// Input: new DateTime(2019, 03, 29, 15, 0, 0)
+            /// Output: "You have an appointment on 29/3/2019 3:00:00 PM."
+            /// </summary>
+            /// <param name="appointmentDate"> a valid instance of <c>DateTime</c></param> 
+            /// <returns><c>string</c> describing the date and time of the appointment.</returns> 
+            /// <exception cref="NotImplementedException"></exception>
+        }
         public static string Description(DateTime appointmentDate)
         {
-            //TODO: Implement the method as described in the document comments. 
-            throw new NotImplementedException("Please implement the (static) Appointment.Description() method");
+            //TODO: Implement the method as described in the document comments.
+            return ("You have an appointment on " + appointmentDate.ToString());
+            
             // See: https://learn.microsoft.com/en-us/dotnet/standard/base-types/custom-date-and-time-format-strings
         }
 
@@ -99,7 +115,12 @@ namespace BookingUpForBeauty
         public static DateTime AnniversaryDate()
         {
             //TODO: Implement the method as described in the document comments. 
-            throw new NotImplementedException("Please implement the (static) Appointment.AnniversaryDate() method");
+            DateTime DateNow = DateTime.Now;
+            int ThisYear = DateNow.Year;
+            DateTime ThisYearAniversery = new DateTime(ThisYear, 9, 15, 0, 0, 0);
+            return ThisYearAniversery;  
+
+
         }
     }
 }
